@@ -1,6 +1,7 @@
 'use strict';
 
 const promiseMiddleware = store => next => action => {
+  //console.log(action.payload)
   if (isPromise(action.payload)) {
     action.payload.then(
       res => {

@@ -4,6 +4,8 @@ import ArticlePreview from './ArticlePreview';
 import React from 'react';
 
 const ArticleList = props => {
+  console.log('!props.articles'+props.articles)
+
   if (!props.articles) {
     return (
       <div className="article-preview">Loading...</div>
@@ -19,15 +21,19 @@ const ArticleList = props => {
   }
 
   return (
-    <div>
-      {
-        props.articles.map(article => {
-          return (
-            <ArticlePreview article={article} key={article.slug} />
-          );
-        })
-      }
-    </div>
+      <div>
+          <div className="article-header">
+              <div>City Name</div>
+              <div>Temp in C</div>
+              <div>Temp in F</div>
+          </div>
+          <div className="article-preview">
+              <div>{props.articles.display_location.full}</div>
+              <div>{props.articles.temp_c}</div>
+              <div>{props.articles.temp_f}</div>
+          </div>
+      </div>
+
   );
 };
 
